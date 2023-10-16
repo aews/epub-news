@@ -1,5 +1,5 @@
 #!bin/sh
-mkdir -p ./.config/dbxcli/
+mkdir -p ~/.config/dbxcli/
 echo "{\"\":{\"personal\":\"$DROPBOX_PERSONAL_TOKEN\"}}" > ~/.config/dbxcli/auth.json
 dbxcli ls
 rm -f heise.epub
