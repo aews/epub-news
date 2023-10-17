@@ -22,7 +22,7 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      -
-      - name: builder-docker-image-and-publish
+      - 
+        name: builder-docker-image-and-publish
         run: |
             bash docker-build.sh
