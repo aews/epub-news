@@ -12,7 +12,11 @@ jobs:
     container:
       image: alexanderwessel/calibre    
     steps:
-      -
-        name: Checkout
+      - name: Checkout
         uses: actions/checkout@v4
-      - run:  bash publish-heise-to-dropbox.sh
+      - name: publish-heise-to-dropbox
+        shell: bash
+        env:
+            DROPBOX_PERSONAL_TOKEN: ${{ secrets.DROPBOX_PERSONAL_TOKEN }}
+        run: |
+            publish-heise-to-dropbox.sh
