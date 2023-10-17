@@ -1,5 +1,5 @@
 on:
-  workflow_dispatch:
+  #workflow_dispatch:
   schedule:
     - cron: '0 17 * * *'
     # min, hour (24h UTC), day of month, month, day of week 0-6 SUN-SAT 
