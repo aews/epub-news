@@ -1,5 +1,3 @@
-name: heise
-
 on:
   workflow_dispatch:
 #  push:
@@ -15,8 +13,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: publish-heise-to-dropbox
-        shell: bash
         env:
             DROPBOX_PERSONAL_TOKEN: ${{ secrets.DROPBOX_PERSONAL_TOKEN }}
         run: |
-            publish-heise-to-dropbox.sh
+            bash publish-heise-to-dropbox.sh
