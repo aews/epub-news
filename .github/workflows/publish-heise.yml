@@ -7,7 +7,7 @@ jobs:
   publish-heise:
     runs-on: ubuntu-latest
     container:
-      image: alexanderwessel/calibre    
+      image: linuxserver/calibre:latest    
     steps:
       - name: Checkout
         uses: actions/checkout@v4
