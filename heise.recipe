@@ -6,7 +6,7 @@ Fetch heise.
 '''
 
 from calibre.web.feeds.news import BasicNewsRecipe
-
+import os
 
 class heiseDe(BasicNewsRecipe):
 
@@ -16,7 +16,7 @@ class heiseDe(BasicNewsRecipe):
     use_embedded_content = False
     language = 'de'
     timefmt = ' [%d %b %Y]'
-    max_articles_per_feed = 100
+    max_articles_per_feed = 50
     no_stylesheets = True
 
     extra_css = '''
@@ -74,3 +74,17 @@ class heiseDe(BasicNewsRecipe):
 
     def get_article_url(self, article):
         return article.link + "&view=print"
+
+    def get_browser(self):
+        br = BasicNewsRecipe.get_browser(self)
+        def select_form(form):
+            return form.attrs.get('action', None) == '/sso/login/login'
+
+        if os.environ.get("HEISE_USER") is not None and os.environ.get("HEISE_PASSWORD") is not None:
+            br.open('https://www.heise.de/sso/login')
+            br.select_form(predicate=select_form)
+            br['username']   = os.environ["HEISE_USER"]
+            br['password'] = os.environ["HEISE_PASSWORD"]
+            br.submit()
+        else: print("HEISE_USER and HEISE_PASSWORD env parameter missing for login, skipped.")
+        return br
