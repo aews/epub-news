@@ -16,11 +16,13 @@ gdrive account import account.tar
 # generate epub 
 name=heise
 recipe=$name.recipe
-epub=$name.epub
+epub="$name-$(date '+%d.%m.%Y').epub"
 
 rm -f $epubName
 #download as epub
 ebook-convert $recipe $epub
 
-# upload epub, 1PN58EKFTbHyndiN83qf-s3GPhicFjWM- = "Rakuten Kobo"
-gdrive files upload --parent 1PN58EKFTbHyndiN83qf-s3GPhicFjWM- $epub
+# remove existing files and upload new epub to dir "Rakuten Kobo"
+directory=1PN58EKFTbHyndiN83qf-s3GPhicFjWM-
+gdrive files list --parent $directory | grep $name | cut --delimiter " " --fields 1 | xargs -I % gdrive files delete %
+gdrive files upload --parent $directory $epub

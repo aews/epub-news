@@ -1,7 +1,8 @@
 on:
   schedule:
-    - cron: '0 17 * * *'
-    # min, hour (24h UTC), day of month, month, day of week 0-6 SUN-SAT 
+    - cron: '40 16 * * *'
+    # min, hour (24h UTC), day of month, month, day of week 0-6 SUN-SAT
+    # it needs up to 15 min to start    
   workflow_dispatch:
 jobs:
   publish-heise:
