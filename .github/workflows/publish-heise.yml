@@ -15,5 +15,7 @@ jobs:
       - name: publish-heise-to-gdrive
         env:
             GDRIVE_ACCOUNT_BASE64: ${{ secrets.GDRIVE_ACCOUNT_BASE64 }}
+            HEISE_USER: ${{ secrets.HEISE_USER }}
+            HEISE_PASSWORD: ${{ secrets.HEISE_PASSWORD }}              
         run: |
             bash publish-heise-to-gdrive.sh
