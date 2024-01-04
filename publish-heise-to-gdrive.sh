@@ -18,9 +18,9 @@ name=heise
 recipe=$name.recipe
 epub="$name-$(date '+%d.%m.%Y').epub"
 
-rm -f $epubName
+rm -f $epub
 #download as epub
-ebook-convert $recipe $epub
+ebook-convert $recipe $epub --flow-size 0
 
 # remove existing files and upload new epub to dir "Rakuten Kobo"
 directory=1PN58EKFTbHyndiN83qf-s3GPhicFjWM-
