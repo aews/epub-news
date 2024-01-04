@@ -20,7 +20,7 @@ epub="$name-$(date '+%d.%m.%Y').epub"
 
 rm -f $epub
 #download as epub
-ebook-convert $recipe $epub -v --epub-version 3
+ebook-convert $recipe $epub -v --epub-max-image-size 150x300
 
 # remove existing files and upload new epub to dir "Rakuten Kobo"
 directory=1PN58EKFTbHyndiN83qf-s3GPhicFjWM-
