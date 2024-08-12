@@ -78,7 +78,7 @@ class heiseDe(BasicNewsRecipe):
     def get_browser(self):
         br = BasicNewsRecipe.get_browser(self)
         def select_form(form):
-            return true #form.attrs.get('action', None) == '/sso/login/login/nojs'
+            return True #form.attrs.get('action', None) == '/sso/login/login/nojs'
 
         if os.environ.get("HEISE_USER") is not None and os.environ.get("HEISE_PASSWORD") is not None:
             br.open('https://www.heise.de/sso/login')
